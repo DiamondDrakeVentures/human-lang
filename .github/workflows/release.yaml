@@ -1,0 +1,54 @@
+name: Release
+on:
+  push:
+    tags:
+      - '*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Load module manifest
+      id: manifest
+      uses: zoexx/github-action-json-file-properties@release
+      with:
+        file_path: "./module.json"
+
+    - name: Set up variables
+      id: get_vars
+      run: |
+        TAG=${GITHUB_REF/refs\/tags\//}
+        echo "TAG_NAME=$TAG" >> $GITHUB_ENV
+        echo "ZIP_NAME=human-lang-$TAG.zip" >> $GITHUB_ENV
+        echo "RELEASE_DOWNLOAD_URL=https://github.com/${{github.repository}}/releases/download/$TAG/human-lang-$TAG.zip" >> $GITHUB_ENV
+        echo "RELEASE_INSTALL_URL=https://github.com/${{github.repository}}/releases/download/$TAG/module.zip" >> $GITHUB_ENV
+
+    - run: zip ${{ env.ZIP_NAME }} -r README.md LICENSE module.json module
+
+    - name: Fetch release body
+      id: release
+      uses: cardinalby/git-get-release-action@v1
+      env:
+        GITHUB_TOKEN: ${{ github.token }}
+      with:
+        tag: ${{ env.TAG_NAME }}
+        doNotFailIfNotFound: true
+
+    - name: Update release with files
+      uses: ncipollo/release-action@v1
+      with:
+        allowUpdates: true
+        name: ${{ env.TAG_NAME }}
+        draft: false
+        omitDraftDuringUpdate: true
+        omitPrereleaseDuringUpdate: true
+        token: ${{ secrets.GITHUB_TOKEN }}
+        artifacts: './module.json, ./${{ env.ZIP_NAME }}'
+        tag: ${{ env.TAG_NAME }}
+        body: |
+          ${{ steps.release.outputs.body }}
+
+          **Installation:** To manually install this release, please use the following manifest url `${{ env.RELEASE_INSTALL_URL }}`.
