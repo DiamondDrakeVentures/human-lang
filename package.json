@@ -1,0 +1,5 @@
+{
+    "scripts": {
+        "install": "node utils/install.mjs"
+    }
+}
