@@ -7,6 +7,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
     steps:
     - uses: actions/checkout@v4
@@ -24,7 +26,7 @@ jobs:
         echo "TAG_NAME=$TAG" >> $GITHUB_ENV
         echo "ZIP_NAME=human-lang-$TAG.zip" >> $GITHUB_ENV
         echo "RELEASE_DOWNLOAD_URL=https://github.com/${{github.repository}}/releases/download/$TAG/human-lang-$TAG.zip" >> $GITHUB_ENV
-        echo "RELEASE_INSTALL_URL=https://github.com/${{github.repository}}/releases/download/$TAG/module.zip" >> $GITHUB_ENV
+        echo "RELEASE_INSTALL_URL=https://github.com/${{github.repository}}/releases/download/$TAG/module.json" >> $GITHUB_ENV
 
     - run: zip ${{ env.ZIP_NAME }} -r README.md LICENSE module.json module
 
@@ -34,7 +36,8 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ github.token }}
       with:
-        tag: ${{ env.TAG_NAME }}
+        releaseName: ${{ env.TAG_NAME }}
+        draft: true
         doNotFailIfNotFound: true
 
     - name: Update release with files
@@ -45,7 +48,6 @@ jobs:
         draft: false
         omitDraftDuringUpdate: true
         omitPrereleaseDuringUpdate: true
-        token: ${{ secrets.GITHUB_TOKEN }}
         artifacts: './module.json, ./${{ env.ZIP_NAME }}'
         tag: ${{ env.TAG_NAME }}
         body: |
