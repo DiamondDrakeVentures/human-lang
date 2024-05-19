@@ -1,0 +1,17 @@
+# OS-Specific ignores
+# Windows
+Thumbs.db
+
+# macOS
+.DS_Store
+
+# Linux
+lost+found
+
+# Stack-specific ignores
+node_modules/
+
+# IDE-specific ignores
+.vscode
+
+# Project-specific ignores
