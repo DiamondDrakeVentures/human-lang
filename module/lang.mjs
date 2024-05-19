@@ -1,3 +1,5 @@
+import { preLocalize } from "./utils.mjs";
+
 const LANG = {
     afrikaans: 'HUMAN-LANG.lang.afrikaans',
     albanian: 'HUMAN-LANG.lang.albanian',
@@ -128,6 +130,7 @@ const LANG = {
     yiddish: 'HUMAN-LANG.lang.yiddish',
     yoruba: 'HUMAN-LANG.lang.yoruba',
     zulu: 'HUMAN-LANG.lang.zulu',
-  };
+};
+preLocalize("lang", LANG);
 
 export default LANG;

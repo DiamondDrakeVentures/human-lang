@@ -1,4 +1,5 @@
 import * as Settings from "./settings.mjs";
+import * as Utils from "./utils.mjs";
 import Lang from "./lang.mjs";
 
 function registerSysSettings() {
@@ -85,4 +86,8 @@ Hooks.once("init", () => {
     if(Settings.get("remove_cant")) {
         delete CONFIG.DND5E.languages.cant;
     }
+});
+
+Hooks.once("i18nInit", () => {
+    Utils.performPreLocalization();
 });
