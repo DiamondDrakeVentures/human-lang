@@ -13,6 +13,8 @@ This project attempts to adhere to [Semantic Versioning](https://semver.org/spec
 
 ### Changed
 
+- Implemented localization for all module texts.
+
 ### Deprecated
 
 ### Removed

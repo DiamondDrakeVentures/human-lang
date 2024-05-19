@@ -28,7 +28,7 @@ jobs:
         echo "RELEASE_DOWNLOAD_URL=https://github.com/${{github.repository}}/releases/download/$TAG/human-lang-$TAG.zip" >> $GITHUB_ENV
         echo "RELEASE_INSTALL_URL=https://github.com/${{github.repository}}/releases/download/$TAG/module.json" >> $GITHUB_ENV
 
-    - run: zip ${{ env.ZIP_NAME }} -r README.md LICENSE module.json module
+    - run: zip ${{ env.ZIP_NAME }} -r README.md LICENSE module.json module lang
 
     - name: Fetch release body
       id: release

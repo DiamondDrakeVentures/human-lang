@@ -8,6 +8,7 @@ const src = [
     "module.json",
     "README.md",
     "module",
+    "lang",
 ];
 
 let prefix;

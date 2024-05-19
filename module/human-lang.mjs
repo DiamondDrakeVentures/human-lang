@@ -26,7 +26,7 @@ Hooks.once("init", () => {
     }
 
     CONFIG.DND5E.languages.human = {
-        label: "Human Languages",
+        label: "HUMAN-LANG.group.human",
         children: Lang,
     };
 
