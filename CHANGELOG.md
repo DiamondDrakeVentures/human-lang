@@ -5,9 +5,24 @@ All notable changes in Human Languages will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 This project attempts to adhere to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [UNRELEASE]
+## [UNRELEASED]
 
 ### Added
+
+### Changed
+
+### Deprecated
+
+### Removed
+
+### Fixed
+
+### Security
+
+## [0.1.0] - 2024-05-18
+
+### Added
+
 - Added the following languages:
   - Afrikaans
   - Albanian
@@ -138,13 +153,3 @@ This project attempts to adhere to [Semantic Versioning](https://semver.org/spec
   - Yiddish
   - Yoruba
   - Zulu
-
-### Changed
-
-### Deprecated
-
-### Removed
-
-### Fixed
-
-### Security
