@@ -2,10 +2,10 @@
     "id": "human-lang",
     "title": "Human Languages",
     "description": "Add human languages to D&D 5e.",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "url": "https://github.com/DiamondDrakeVentures/human-lang",
-    "manifest": "https://github.com/DiamondDrakeVentures/human-lang/releases/download/0.1.0/module.json",
-    "download": "https://github.com/DiamondDrakeVentures/human-lang/releases/download/0.1.0/human-lang-0.1.0.zip",
+    "manifest": "https://github.com/DiamondDrakeVentures/human-lang/releases/download/0.2.0/module.json",
+    "download": "https://github.com/DiamondDrakeVentures/human-lang/releases/download/0.2.0/human-lang-0.2.0.zip",
     "authors": [
         {
             "name": "GHIFARI160",
