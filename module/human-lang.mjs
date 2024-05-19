@@ -1,66 +1,36 @@
+import * as Settings from "./settings.mjs";
 import Lang from "./lang.mjs";
 
 function registerSysSettings() {
-    game.settings.register("human-lang", "common_lang", {
-        config: true,
-        requiresReload: true,
-        scope: "world",
-        name: "HUMAN-LANG.common_lang.name",
-        hint: "HUMAN-LANG.common_lang.hint",
-        type: String,
+    Settings.add("common_lang", {
         choices: {
             common: "Common",
-            ...Lang
+            ...Lang,
         },
         default: "common",
     });
 
-    game.settings.register("human-lang", "remove_standard", {
-        config: true,
-        requiresReload: true,
-        scope: "world",
-        name: "HUMAN-LANG.remove_standard.name",
-        hint: "HUMAN-LANG.remove_standard.hint",
+    Settings.add("remove_standard", {
         type: Boolean,
         default: false,
     });
 
-    game.settings.register("human-lang", "remove_exotic", {
-        config: true,
-        requiresReload: true,
-        scope: "world",
-        name: "HUMAN-LANG.remove_exotic.name",
-        hint: "HUMAN-LANG.remove_exotic.hint",
+    Settings.add("remove_exotic", {
         type: Boolean,
         default: false,
     });
 
-    game.settings.register("human-lang", "remove_primordial", {
-        config: true,
-        requiresReload: true,
-        scope: "world",
-        name: "HUMAN-LANG.remove_primordial.name",
-        hint: "HUMAN-LANG.remove_primordial.hint",
+    Settings.add("remove_primordial", {
         type: Boolean,
         default: false,
     });
 
-    game.settings.register("human-lang", "remove_druidic", {
-        config: true,
-        requiresReload: true,
-        scope: "world",
-        name: "HUMAN-LANG.remove_druidic.name",
-        hint: "HUMAN-LANG.remove_druidic.hint",
+    Settings.add("remove_druidic", {
         type: Boolean,
         default: false,
     });
 
-    game.settings.register("human-lang", "remove_cant", {
-        config: true,
-        requiresReload: true,
-        scope: "world",
-        name: "HUMAN-LANG.remove_cant.name",
-        hint: "HUMAN-LANG.remove_cant.hint",
+    Settings.add("remove_cant", {
         type: Boolean,
         default: false,
     });
@@ -69,7 +39,7 @@ function registerSysSettings() {
 Hooks.once("init", () => {
     registerSysSettings();
 
-    const commonLang = game.settings.get("human-lang", "common_lang");
+    const commonLang = Settings.get("common_lang");
 
     if(commonLang != "common") {
         CONFIG.DND5E.languages.standard.children.common = Lang[commonLang];
@@ -84,7 +54,7 @@ Hooks.once("init", () => {
         delete CONFIG.DND5E.languages.human.children[commonLang];
     }
 
-    if(game.settings.get("human-lang", "remove_standard")) {
+    if(Settings.get("remove_standard")) {
         for(const [key, val] of Object.entries(CONFIG.DND5E.languages.standard.children)) {
             if(key != "common") {
                 delete CONFIG.DND5E.languages.standard.children[key];
@@ -92,7 +62,7 @@ Hooks.once("init", () => {
         }
     }
 
-    if(game.settings.get("human-lang", "remove_exotic")) {
+    if(Settings.get("remove_exotic")) {
         for(const [key, val] of Object.entries(CONFIG.DND5E.languages.exotic.children)) {
             if(key != "primordial") {
                 delete CONFIG.DND5E.languages.exotic.children[key];
@@ -100,7 +70,7 @@ Hooks.once("init", () => {
         }
     }
 
-    if(game.settings.get("human-lang", "remove_primordial")) {
+    if(Settings.get("remove_primordial")) {
         delete CONFIG.DND5E.languages.exotic.children.primordial;
     }
 
@@ -108,11 +78,11 @@ Hooks.once("init", () => {
         delete CONFIG.DND5E.languages.exotic;
     }
 
-    if(game.settings.get("human-lang", "remove_druidic")) {
+    if(Settings.get("remove_druidic")) {
         delete CONFIG.DND5E.languages.druidic;
     }
 
-    if(game.settings.get("human-lang", "remove_cant")) {
+    if(Settings.get("remove_cant")) {
         delete CONFIG.DND5E.languages.cant;
     }
 });
