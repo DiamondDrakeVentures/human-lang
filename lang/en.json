@@ -4,6 +4,26 @@
             "name": "Common Language",
             "hint": "The common language. In default D&D 5e, this is Common."
         },
+        "remove_standard": {
+            "name": "Remove Standard Languages",
+            "hint": "Enable to remove all standard languages except for the common language."
+        },
+        "remove_exotic": {
+            "name": "Remove Exotic Languages",
+            "hint": "Enable to remove all exotic languages except for Primordial."
+        },
+        "remove_primordial": {
+            "name": "Remove Primordial Languages",
+            "hint": "Enable to remove all Primordial languages."
+        },
+        "remove_druidic": {
+            "name": "Remove Druidic",
+            "hint": "Enable to remove Druidic (NOT RECOMMENDED)."
+        },
+        "remove_cant": {
+            "name": "Remove Thieves' Cant",
+            "hint": "Enable to remove Thieves' Cant (NOT RECOMMENDED)."
+        },
         "group": {
             "human": "Human Languages"
         },
