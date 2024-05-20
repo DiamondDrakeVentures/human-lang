@@ -1,40 +1,42 @@
 {
-    "id": "human-lang",
-    "title": "Human Languages",
-    "description": "Add human languages to D&D 5e.",
-    "version": "0.2.0",
-    "url": "https://github.com/DiamondDrakeVentures/human-lang",
-    "manifest": "https://github.com/DiamondDrakeVentures/human-lang/releases/download/0.2.0/module.json",
-    "download": "https://github.com/DiamondDrakeVentures/human-lang/releases/download/0.2.0/human-lang-0.2.0.zip",
-    "authors": [
-        {
-            "name": "GHIFARI160",
-            "discord": "ghifari160",
-            "email": "ghi@diamonddrake.co"
+  "id": "human-lang",
+  "title": "Human Languages",
+  "description": "Add human languages to D&D 5e.",
+  "version": "0.3.0",
+  "url": "https://github.com/DiamondDrakeVentures/human-lang",
+  "manifest": "https://github.com/DiamondDrakeVentures/human-lang/releases/download/0.3.0/module.json",
+  "download": "https://github.com/DiamondDrakeVentures/human-lang/releases/download/0.3.0/human-lang-0.3.0.zip",
+  "authors": [
+    {
+      "name": "GHIFARI160",
+      "discord": "ghifari160",
+      "email": "ghi@diamonddrake.co"
+    }
+  ],
+  "compatibility": {
+    "minimum": "11",
+    "verified": "11"
+  },
+  "esmodules": [
+    "module/human-lang.mjs"
+  ],
+  "relationships": {
+    "systems": [
+      {
+        "id": "dnd5e",
+        "type": "system",
+        "manifest": "https://github.com/foundryvtt/dnd5e/releases/latest/download/system.json",
+        "compatibility": {
+          "verified": "3.1.2"
         }
-    ],
-    "compatibility": {
-        "minimum": "11",
-        "verified": "11"
-    },
-    "esmodules": ["module/human-lang.mjs"],
-    "relationships": {
-        "systems": [
-            {
-                "id": "dnd5e",
-                "type": "system",
-                "manifest": "https://github.com/foundryvtt/dnd5e/releases/latest/download/system.json",
-                "compatibility": {
-                    "verified": "3.1.2"
-                }
-            }
-        ]
-    },
-    "languages": [
-        {
-            "lang": "en",
-            "name": "English",
-            "path": "lang/en.json"
-        }
+      }
     ]
+  },
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    }
+  ]
 }
