@@ -5,7 +5,7 @@ All notable changes in Human Languages will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 This project attempts to adhere to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [UNRELEASED]
+## [0.2.0] - 2024-05-19
 
 ### Added
 
@@ -15,14 +15,6 @@ This project attempts to adhere to [Semantic Versioning](https://semver.org/spec
 ### Changed
 
 - Implemented localization for all module texts.
-
-### Deprecated
-
-### Removed
-
-### Fixed
-
-### Security
 
 ## [0.1.0] - 2024-05-18
 
