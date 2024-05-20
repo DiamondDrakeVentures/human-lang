@@ -10,6 +10,7 @@ This project attempts to adhere to [Semantic Versioning](https://semver.org/spec
 ### Added
 
 - Added setting for replacing the common language.
+- Added settings to remove default languages.
 
 ### Changed
 
