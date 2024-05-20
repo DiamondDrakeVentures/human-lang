@@ -4,7 +4,9 @@
 
         "changelog:promote": "node utils/changelog.mjs promote",
         "changelog:get": "node utils/changelog.mjs get",
-        "changelog:add-unreleased": "node utils/changelog.mjs add-unreleased"
+        "changelog:add-unreleased": "node utils/changelog.mjs add-unreleased",
+
+        "manifest:promote": "node utils/manifest.mjs promote"
     },
     "devDependencies": {
         "yargs": "^17.7.2"
