@@ -1,6 +1,6 @@
 {
     "scripts": {
-        "install": "node utils/install.mjs",
+        "dev": "node utils/install.mjs",
 
         "changelog:promote": "node utils/changelog.mjs promote",
         "changelog:get": "node utils/changelog.mjs get",

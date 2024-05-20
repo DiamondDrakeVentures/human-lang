@@ -19,6 +19,14 @@ jobs:
       with:
         file_path: "./module.json"
 
+    - uses: actions/setup-node@v4
+      with:
+        node-version: "18.x"
+        cache: "npm"
+
+    - name: Install node dependencies
+      run: npm ci
+
     - name: Set up variables
       id: get_vars
       run: |
@@ -28,7 +36,7 @@ jobs:
         echo "RELEASE_DOWNLOAD_URL=https://github.com/${{github.repository}}/releases/download/$TAG/human-lang-$TAG.zip" >> $GITHUB_ENV
         echo "RELEASE_INSTALL_URL=https://github.com/${{github.repository}}/releases/download/$TAG/module.json" >> $GITHUB_ENV
 
-    - run: zip ${{ env.ZIP_NAME }} -r README.md LICENSE module.json module lang
+    - run: zip ${{ env.ZIP_NAME }} -r README.md LICENSE CHANGELOG.md module.json module lang
 
     - name: Fetch release body
       id: release
@@ -40,6 +48,15 @@ jobs:
         draft: true
         doNotFailIfNotFound: true
 
+    - name: Write release body
+      env:
+        RELEASE_BODY: ${{ steps.release.outputs.body }}
+      run: |
+        echo "$RELEASE_BODY" >> RELEASE.md
+        echo "## Changelog" >> RELEASE.md
+        node utils/changelog.mjs get $TAG_NAME >> RELEASE.md
+        echo "**Installation:** To manually install this release, please use the following manifest url \`$RELEASE_INSTALL_URL\`." >> RELEASE.md
+
     - name: Update release with files
       uses: ncipollo/release-action@v1
       with:
@@ -48,9 +65,6 @@ jobs:
         draft: false
         omitDraftDuringUpdate: true
         omitPrereleaseDuringUpdate: true
-        artifacts: './module.json, ./${{ env.ZIP_NAME }}'
+        artifacts: './module.json, ./${{ env.ZIP_NAME }}, ./RELEASE.md'
         tag: ${{ env.TAG_NAME }}
-        body: |
-          ${{ steps.release.outputs.body }}
-
-          **Installation:** To manually install this release, please use the following manifest url `${{ env.RELEASE_INSTALL_URL }}`.
+        bodyFile: RELEASE.md
